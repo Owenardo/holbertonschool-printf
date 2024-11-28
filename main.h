@@ -7,4 +7,5 @@ int _printf(const char *format, ...);
 int charac(char c);
 int string(char *str);
 int percent(void);
+int print_number(int n);
 #endif

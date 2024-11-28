@@ -8,33 +8,35 @@
 
 int _printf(const char *format, ...)
 {
-	int count = 0; /*count: cuenta los caracteres en total*/
-	const char *ptr = format; /*Ptr para recorrer format*/
-	va_list args; /*maneja una lista de args variables*/
+	int count = 0;
+	const char *ptr = format;
+	va_list args;
 
 	if (format == NULL)
 		return (-1);
-	va_start(args, format); /*Inicializa la lista, utilizando el ultimo arg fijo*/
-	for (ptr = format; *ptr != '\0'; ptr++) /*Recorre format hasta '\0'*/
+	va_start(args, format);
+	for (ptr = format; *ptr != '\0'; ptr++)
 	{
-		if (*ptr == '%') /*si ptr es un %*/
+		if (*ptr == '%')
 		{
-			ptr++; /*avanza ptr*/
-			if (*ptr == 'c') /*si, ptr es character*/
-				count += charac(va_arg(args, int)); /*accede al sig arg, charac imprime c*/
-			else if (*ptr == 's') /*si, ptr es string*/
-				count += string(va_arg(args, char *)); /*accede arg, fun str imprime*/
-			else if (*ptr == '%') /*si, ptr es %*/
-				count += percent(); /*imprime %*/
+			ptr++;
+			if (*ptr == 'c')
+				count += charac(va_arg(args, int));
+			else if (*ptr == 's')
+				count += string(va_arg(args, char *));
+			else if (*ptr == '%')
+				count += percent();
+			else if (*ptr == 'd' || 'i')
+				count += print_number(va_arg(args, int));
 			else
 			{
-				write(1, "%", 1); /*imprime directamente %*/
-				write(1, ptr, 1); /*imprime el caracter desconocido*/
-				count += 2; /*al imprimir el % mas el car desconocido, aumenta 2*/
+				write(1, "%", 1);
+				write(1, ptr, 1);
+				count += 2;
 			}
 		}
 		else
-			count += write(1, ptr, 1); /*si no es %, imprime char actual*/
+			count += write(1, ptr, 1);
 	}
 	va_end(args);
 	return (count);
