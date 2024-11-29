@@ -20,6 +20,8 @@ int _printf(const char *format, ...)
 		if (*ptr == '%')
 		{
 			ptr++;
+			if (*ptr == '\0')
+				return (-1);
 			if (*ptr == 'c')
 				count += charac(va_arg(args, int));
 			else if (*ptr == 's')

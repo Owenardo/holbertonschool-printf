@@ -44,9 +44,7 @@ int string(char *str)
 
 int percent(void)
 {
-	char c = '%';
-
-	return (write(1, &c, 1));
+	return (write(1, "%", 1));
 }
 
 /**
