@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 			else if (*ptr == 's')
 				count += string(va_arg(args, char *));
 			else if (*ptr == '%')
-				count += write(1, "%", 1)
+				count += write(1, "%", 1);
 			else if (*ptr == 'd' || *ptr == 'i')
 				count += print_number(va_arg(args, int));
 			else
