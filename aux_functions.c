@@ -26,7 +26,7 @@ int string(char *str)
 
 	if (str == NULL)
 	{
-		return (-1);
+		str =  "(null)";
 	}
 	for (i = 0; str[i] != '\0'; i++) /*recorre str con i hasta encontrar '\0'*/
 	{
