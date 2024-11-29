@@ -9,13 +9,13 @@
 int _printf(const char *format, ...)
 {
 	int count = 0;
-	const char *ptr = format;
+	const char *ptr;
 	va_list args;
 
 	if (format == NULL)
 		return (-1);
 	va_start(args, format);
-	for (ptr = format; *ptr != '\0'; ptr++)
+	for (ptr = format; *ptr; ptr++)
 	{
 		if (*ptr == '%')
 		{
@@ -25,14 +25,13 @@ int _printf(const char *format, ...)
 			else if (*ptr == 's')
 				count += string(va_arg(args, char *));
 			else if (*ptr == '%')
-				count += percent();
+				count += write(1, "%", 1)
 			else if (*ptr == 'd' || *ptr == 'i')
 				count += print_number(va_arg(args, int));
 			else
 			{
-				write(1, "%", 1);
-				write(1, ptr, 1);
-				count += 2;
+			count += write(1, "%", 1);
+			count += write(1, ptr, 1);
 			}
 		}
 		else
