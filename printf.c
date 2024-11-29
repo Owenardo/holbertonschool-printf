@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 				count += string(va_arg(args, char *));
 			else if (*ptr == '%')
 				count += percent();
-			else if (*ptr == 'd' || 'i')
+			else if (*ptr == 'd' || *ptr == 'i')
 				count += print_number(va_arg(args, int));
 			else
 			{
