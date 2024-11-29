@@ -30,8 +30,7 @@ int _printf(const char *format, ...)
 				count += print_number(va_arg(args, int));
 			else
 			{
-			count += write(1, "%", 1);
-			count += write(1, ptr, 1);
+				ptr--;
 			}
 		}
 		else
