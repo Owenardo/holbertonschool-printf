@@ -1,4 +1,4 @@
-<h1>*README.md*<h1/>
+<h1>README.md<h1/>
 
 # Custom printf Implementation
 A C function that replicates the behavior of the standard ‘printf’ function
