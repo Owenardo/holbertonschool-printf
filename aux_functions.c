@@ -10,7 +10,7 @@
 
 int charac(char c)
 {
-	return (write(1, &c, 1)); /*1=stdout, &c=dire var c, 1=num char*/
+	return (write(1, &c, 1)); 
 }
 
 /**
@@ -21,19 +21,19 @@ int charac(char c)
 
 int string(char *str)
 {
-	int count = 0; /*inicializa count*/
+	int count = 0;
 	int i;
 
 	if (str == NULL)
 	{
 		str =  "(null)";
 	}
-	for (i = 0; str[i] != '\0'; i++) /*recorre str con i hasta encontrar '\0'*/
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		write(1, &str[i], 1); /*1=stdout, str[count]=,1=*/
-		count++; /*aumenta el contador despues de cada caracter*/
+		write(1, &str[i], 1);
+		count++;
 	}
-	return (count); /*retorna el num de char impresos*/
+	return (count);
 }
 
 /**
